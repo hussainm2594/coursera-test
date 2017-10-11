@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  <title>Name Converter</title>
+
+  </head>
+
+  <body ng-app="myFirstAssignment">
+    <h1>Lunch Checker</h1>
+
+      <div ng-controller="AssgnController">
+        Your List:
+        <input type="text" ng-model="input">
+        <button ng-click="displayMessage();">Check if too much</button>
+        <div>
+      Message is:
+          {{message}}
+
+</div>
+  </div>
+  </body>
+</html>
