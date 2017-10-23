@@ -1,10 +1,60 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Hello Coursera</title>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
   </head>
-  <body>
-    <h1>hello coursera Students! i am thrilled about this course</h1>
-  </body>
+<body ng-app="ShoppingListCheckOff"> <!-- step 6 of the instructions -->
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+    <!-- Need 2 controllers using controller as syntax -->
+    <!-- To Buy List -->
+    <div class="col-md-6" ng-controller='list1Controller as ToBuyController'>
+     <h2>To Buy:</h2>
+     <ul>
+       <!-- ng-repeat to list all items in the array -->
+       <li ng-repeat="item in ToBuyController">Buy {{item.quantity}} {{item.name}} <button class="btn btn-default" ng-click="remove($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button> </li>
+       <!-- <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li> -->
+     </ul>
+     <!-- Show this div if the first shopping list is empty -->
+     <div class="emptyMessage" ng-if="!ToBuyController.length">Everything is bought!</div> <!-- If 1st list empty, display -->
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-md-6" ng-controller='list2Controller as AlreadyBoughtController'>
+     <h2>Already Bought:</h2>
+     <ul>
+       <!-- ng-repeat to list all items in the array -->
+       <li ng-repeat="item in AlreadyBoughtController"> Bought {{item.quantity}} {{item.name}}</li>
+       <!-- <li>Bought 10 cookies</li> -->
+     </ul>
+     <!-- Show this div if the second shopping list is empty -->
+     <div class="emptyMessage" ng-if="!AlreadyBoughtController.length">Nothing bought yet.</div> <!-- If 2nd list empty, display -->
+    </div>
+  </div>
+</div>
+<script src="angular.min.js"></script> <!-- allows use of angular JS-->
+<script src="app.js"></script> <!-- allows use of angular JS written -->
+</body>
 </html>
